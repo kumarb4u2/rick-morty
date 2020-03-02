@@ -25,13 +25,13 @@ export class CharactersComponent implements OnInit {
     });
   }
 
-  getSearchText() {
+  getSearchText(): string {
     return this.filterService.searchText;
   }
-  getSortField() {
+  getSortField(): string {
     return this.filterService.sortField;
   }
-  getSortOrder() {
+  getSortOrder(): string {
     return this.filterService.sortOrder;
   }
 }

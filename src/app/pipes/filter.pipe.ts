@@ -5,7 +5,7 @@ import { Character } from "../models/character";
   name: "filter"
 })
 export class FilterPipe implements PipeTransform {
-  transform(value: Character[], searchText: string): unknown {
+  transform(value: Character[], searchText: string): Character[] {
     if (!searchText) {
       return value;
     }

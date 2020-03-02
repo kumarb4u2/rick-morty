@@ -1,10 +1,11 @@
 import { Pipe, PipeTransform } from "@angular/core";
+import { Character } from "../models/character";
 
 @Pipe({
   name: "sort"
 })
 export class SortPipe implements PipeTransform {
-  transform(items: any[], fieldName: string, order: string = "asc"): any {
+  transform(items: Character[], fieldName: string, order: string = "asc"): any {
     if (!items || !fieldName) {
       return items;
     }
