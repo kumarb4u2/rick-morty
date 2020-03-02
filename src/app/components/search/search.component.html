@@ -1,0 +1,14 @@
+<form class="form-inline" (ngSubmit)="searchCharacters()">
+  <div class="form-group">
+    <label for="searchText">Search by name</label>
+    <input
+      type="text"
+      id="searchText"
+      name="searchText"
+      [(ngModel)]="searchText"
+      class="form-control"
+      placeholder="Enter name"
+    />
+    <button class="btn btn-default">Search</button>
+  </div>
+</form>

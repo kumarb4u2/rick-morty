@@ -1,0 +1,17 @@
+.tile-container {
+  background-color: #000;
+}
+
+.search-container {
+  margin: 20px 0;
+  display: flex;
+}
+
+.search-box {
+  width: 50%;
+}
+.sort-box {
+  width: 50%;
+  display: flex;
+  justify-content: flex-end;
+}

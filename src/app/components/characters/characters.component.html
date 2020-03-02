@@ -1,0 +1,21 @@
+<div class="search-container">
+  <div class="search-box">
+    <app-search></app-search>
+  </div>
+  <div class="sort-box">
+    <app-sorting></app-sorting>
+  </div>
+</div>
+<div class="row tile-container">
+  <div
+    *ngFor="
+      let item of characters$
+        | async
+        | filter: getSearchText()
+        | sort: getSortField():getSortOrder()
+    "
+    class="col-xs-6 col-sm-3"
+  >
+    <app-single-character [character]="item"></app-single-character>
+  </div>
+</div>

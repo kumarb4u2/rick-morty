@@ -1,0 +1,21 @@
+<h2>Filters</h2>
+<form>
+  <div class="border">
+    <h4>Species</h4>
+    <div *ngFor="let item of getSpecies()" class="checkbox">
+      <label> <input type="checkbox" [value]="item" /> {{ item }} </label>
+    </div>
+  </div>
+  <div class="border">
+    <h4>Gender</h4>
+    <div *ngFor="let item of getGenders()" class="checkbox">
+      <label> <input type="checkbox" [value]="item" /> {{ item }} </label>
+    </div>
+  </div>
+  <div class="border">
+    <h4>Origin</h4>
+    <div *ngFor="let item of getOrigins()" class="checkbox">
+      <label> <input type="checkbox" [value]="item" /> {{ item }} </label>
+    </div>
+  </div>
+</form>

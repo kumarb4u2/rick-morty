@@ -1,0 +1,20 @@
+<form>
+  <select
+    name="sortField"
+    [(ngModel)]="sortField"
+    (change)="setSortField()"
+    class="form-control"
+  >
+    <option value="id">Sort by ID</option>
+  </select>
+
+  <select
+    class="form-control"
+    name="sortOrder"
+    [(ngModel)]="sortOrder"
+    (change)="setSortOrder()"
+  >
+    <option value="asc">Ascending</option>
+    <option value="desc">Descending</option>
+  </select>
+</form>
