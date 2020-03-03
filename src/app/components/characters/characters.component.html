@@ -7,7 +7,7 @@
     <app-sorting></app-sorting>
   </div>
 </div>
-<div class="row tile-container">
+<div #tileContainer class="row tile-container">
   <div
     *ngFor="
       let item of characters$
@@ -21,3 +21,4 @@
     <app-single-character [character]="item"></app-single-character>
   </div>
 </div>
+<h3 *ngIf="!tileContainer.children.length">No match found</h3>
