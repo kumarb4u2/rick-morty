@@ -22,4 +22,18 @@ export class SidebarComponent implements OnInit {
   getOrigins() {
     return this.filterService.origins;
   }
+
+  selectSpecies(value: string, cat: string, checked: boolean) {
+    const selectedItems: string[] = this.filterService.selectedFilters[cat];
+    const itemIndex = selectedItems?.indexOf(value);
+    if (itemIndex === -1) {
+      selectedItems.push(value);
+    } else {
+      selectedItems.splice(itemIndex, 1);
+    }
+    this.filterService.selectedFilters = {
+      ...this.filterService.selectedFilters,
+      [cat]: selectedItems
+    };
+  }
 }

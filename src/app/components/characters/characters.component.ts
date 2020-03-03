@@ -34,4 +34,11 @@ export class CharactersComponent implements OnInit {
   getSortOrder(): string {
     return this.filterService.sortOrder;
   }
+  getSelectedFilters(): any {
+    return this.filterService.selectedFilters;
+  }
+
+  getAllSelectedAttributes(): string[] {
+    return this.filterService.getAllSelectedAttributes();
+  }
 }
