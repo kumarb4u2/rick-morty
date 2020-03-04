@@ -14,6 +14,8 @@ import { FilterPipe } from "./pipes/filter.pipe";
 import { SortingComponent } from "./components/sorting/sorting.component";
 import { SortPipe } from "./pipes/sort.pipe";
 import { AttributePipe } from "./pipes/attribute.pipe";
+import { FilterTilesComponent } from './components/filter-tiles/filter-tiles.component';
+import { ThumbnailComponent } from './components/thumbnail/thumbnail.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,9 @@ import { AttributePipe } from "./pipes/attribute.pipe";
     FilterPipe,
     SortingComponent,
     SortPipe,
-    AttributePipe
+    AttributePipe,
+    FilterTilesComponent,
+    ThumbnailComponent
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
   providers: [],

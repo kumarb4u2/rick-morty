@@ -1,7 +1,5 @@
 <div class="tile">
-  <img [src]="character.image" [alt]="character.name" />
-  <h2>{{ character.name }}</h2>
-  <p>{{ character.id }} - created on {{ character.created | date }}</p>
+  <app-thumbnail [character]="character"></app-thumbnail>
   <div class="feature-container">
     <div class="row">
       <div class="col-xs-3 feature-name">STATUS</div>

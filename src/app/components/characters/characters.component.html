@@ -1,4 +1,4 @@
-{{ getAllSelectedAttributes() }}
+<app-filter-tiles></app-filter-tiles>
 <div class="search-container">
   <div class="search-box">
     <app-search></app-search>
@@ -13,7 +13,7 @@
       let item of characters$
         | async
         | filter: getSearchText()
-        | attribute: getSelectedFilters()
+        | attribute: getCheckedAttributeValues()
         | sort: getSortField():getSortOrder()
     "
     class="col-xs-6 col-sm-3"

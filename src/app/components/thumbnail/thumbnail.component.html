@@ -1,0 +1,9 @@
+<div
+  class="thumbnail-container"
+  [ngStyle]="{ 'background-image': 'url(' + character.image + ')' }"
+>
+  <div class="summary">
+    <h2>{{ character.name }}</h2>
+    <p>{{ character.id }} - created on {{ character.created | date }}</p>
+  </div>
+</div>

@@ -8,10 +8,7 @@ export class FilterService {
   private _searchText: string;
   private _sortField: string;
   private _sortOrder: string;
-  private _species: string[] = [];
-  private _genders: string[] = [];
-  private _origins: string[] = [];
-  private _selectedFilters: any = {
+  private _attribute: any = {
     species: [],
     genders: [],
     origins: []
@@ -38,52 +35,97 @@ export class FilterService {
   get sortOrder() {
     return this._sortOrder;
   }
-  set species(value) {
-    this._species = value;
-  }
-
-  get species() {
-    return this._species;
-  }
-
-  set genders(value) {
-    this._genders = value;
-  }
-
-  get genders() {
-    return this._genders;
-  }
-
-  set origins(value) {
-    this._origins = value;
-  }
-
-  get origins() {
-    return this._origins;
-  }
-  set selectedFilters(value) {
-    this._selectedFilters = value;
-  }
-
-  get selectedFilters() {
-    return this._selectedFilters;
-  }
-
-  setFilterValues(characters: Character[]) {
-    for (const character of characters) {
-      this._species.push(character.species);
-      this._genders.push(character.gender);
-      this._origins.push(character.origin.name);
-    }
-    // set the unique item
-    this.species = this._species.filter((v, i, a) => a.indexOf(v) === i);
-    this.genders = this._genders.filter((v, i, a) => a.indexOf(v) === i);
-    this.origins = this._origins.filter((v, i, a) => a.indexOf(v) === i);
-  }
-
-  getAllSelectedAttributes(): string[] {
-    return ["Male", "Female"];
-  }
 
   constructor() {}
+
+  set attribute(value) {
+    this._attribute = value;
+  }
+
+  get attribute() {
+    return this._attribute;
+  }
+
+  getUniqueItems(props: string[]) {
+    return props.filter((v, i, a) => a.indexOf(v) === i);
+  }
+
+  formatAttributes(items: string[], cat: string): any[] {
+    const formattedList: any[] = [];
+    for (const item of items) {
+      formattedList.push({ checked: false, value: item, category: cat });
+    }
+    return formattedList;
+  }
+
+  setAttributes(characters: Character[]) {
+    let allSpecies: any[] = [];
+    let allGenders: any[] = [];
+    let allOrigins: any[] = [];
+    for (const character of characters) {
+      allSpecies.push(character.species);
+      allGenders.push(character.gender);
+      allOrigins.push(character.origin.name);
+    }
+    // taking unique items
+    allSpecies = this.formatAttributes(
+      this.getUniqueItems(allSpecies),
+      "species"
+    );
+    allGenders = this.formatAttributes(
+      this.getUniqueItems(allGenders),
+      "genders"
+    );
+    allOrigins = this.formatAttributes(
+      this.getUniqueItems(allOrigins),
+      "origins"
+    );
+    this.attribute = {
+      species: allSpecies,
+      genders: allGenders,
+      origins: allOrigins
+    };
+  }
+
+  // setting check or unchecked
+  setChecked(value: string, cat: string, checked: boolean) {
+    let attr = this.attribute[cat];
+    const itemIndex = attr.findIndex(item => item.value === value);
+    if (checked) {
+      attr[itemIndex].checked = true;
+    } else {
+      attr[itemIndex].checked = false;
+    }
+    this.attribute = { ...this.attribute, [cat]: attr };
+  }
+  // to filter items in pipe we need data as array of string
+  getCheckedAttributeValues() {
+    let attr = this.attribute;
+    const reduce = (acc, current) => {
+      if (current.checked) {
+        acc.push(current.value);
+      }
+      return acc;
+    };
+    attr = {
+      species: attr.species.reduce(reduce, []),
+      genders: attr.genders.reduce(reduce, []),
+      origins: attr.origins.reduce(reduce, [])
+    };
+    return attr;
+  }
+
+  // To display select filters
+  getCheckedAttributeObjects() {
+    let attr = this.attribute;
+    const finalItemList = [];
+    for (const key of Object.keys(attr)) {
+      for (const item of attr[key]) {
+        if (item.checked) {
+          finalItemList.push(item);
+        }
+      }
+    }
+    return finalItemList;
+  }
 }

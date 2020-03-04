@@ -11,29 +11,11 @@ export class SidebarComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  getSpecies() {
-    return this.filterService.species;
+  getAttributes() {
+    return this.filterService.attribute;
   }
 
-  getGenders() {
-    return this.filterService.genders;
-  }
-
-  getOrigins() {
-    return this.filterService.origins;
-  }
-
-  selectSpecies(value: string, cat: string, checked: boolean) {
-    const selectedItems: string[] = this.filterService.selectedFilters[cat];
-    const itemIndex = selectedItems?.indexOf(value);
-    if (itemIndex === -1) {
-      selectedItems.push(value);
-    } else {
-      selectedItems.splice(itemIndex, 1);
-    }
-    this.filterService.selectedFilters = {
-      ...this.filterService.selectedFilters,
-      [cat]: selectedItems
-    };
+  setChecked(value: string, cat: string, checked: boolean) {
+    this.filterService.setChecked(value, cat, checked);
   }
 }

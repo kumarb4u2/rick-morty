@@ -7,7 +7,6 @@ import { SelectedFilter } from "../models/selected-filter";
 })
 export class AttributePipe implements PipeTransform {
   transform(value: Character[], selectedFilter: SelectedFilter): Character[] {
-    console.log("selectedFilter", selectedFilter);
     const selectedSpecies = selectedFilter?.species;
     const selectedGenders = selectedFilter?.genders;
     const selectedOrigins = selectedFilter?.origins;

@@ -21,7 +21,7 @@ export class CharactersComponent implements OnInit {
   ngOnInit(): void {
     this.characterService.getCharacters().subscribe((data: Result) => {
       this.characters$ = of(data.results);
-      this.filterService.setFilterValues(data.results);
+      this.filterService.setAttributes(data.results);
     });
   }
 
@@ -34,11 +34,7 @@ export class CharactersComponent implements OnInit {
   getSortOrder(): string {
     return this.filterService.sortOrder;
   }
-  getSelectedFilters(): any {
-    return this.filterService.selectedFilters;
-  }
-
-  getAllSelectedAttributes(): string[] {
-    return this.filterService.getAllSelectedAttributes();
+  getCheckedAttributeValues(): any {
+    return this.filterService.getCheckedAttributeValues();
   }
 }

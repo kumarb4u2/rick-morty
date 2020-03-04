@@ -1,0 +1,22 @@
+img {
+  width: 100%;
+}
+h2 {
+  margin: 0;
+}
+.thumbnail-container {
+  height: 300px;
+  background-repeat: no-repeat;
+  background-position: center;
+  position: relative;
+}
+
+.summary {
+  position: absolute;
+  bottom: 0;
+  background-color: #333;
+  color: #fff;
+  opacity: 0.8;
+  width: 100%;
+  padding: 5px;
+}

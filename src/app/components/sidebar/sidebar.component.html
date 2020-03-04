@@ -2,40 +2,43 @@
 <form>
   <div class="border">
     <h4>Species</h4>
-    <div *ngFor="let item of getSpecies()" class="checkbox">
+    <div *ngFor="let item of getAttributes().species" class="checkbox">
       <label>
         <input
           type="checkbox"
           [value]="item"
-          (change)="selectSpecies(item, 'species', $event.target.checked)"
+          (change)="setChecked(item.value, 'species', $event.target.checked)"
+          [checked]="item.checked"
         />
-        {{ item }}
+        {{ item.value }}
       </label>
     </div>
   </div>
   <div class="border">
     <h4>Gender</h4>
-    <div *ngFor="let item of getGenders()" class="checkbox">
+    <div *ngFor="let item of getAttributes().genders" class="checkbox">
       <label>
         <input
           type="checkbox"
           [value]="item"
-          (change)="selectSpecies(item, 'genders', $event.target.checked)"
+          (change)="setChecked(item.value, 'genders', $event.target.checked)"
+          [checked]="item.checked"
         />
-        {{ item }}
+        {{ item.value }}
       </label>
     </div>
   </div>
   <div class="border">
     <h4>Origin</h4>
-    <div *ngFor="let item of getOrigins()" class="checkbox">
+    <div *ngFor="let item of getAttributes().origins" class="checkbox">
       <label>
         <input
           type="checkbox"
           [value]="item"
-          (change)="selectSpecies(item, 'origins', $event.target.checked)"
+          (change)="setChecked(item.value, 'origins', $event.target.checked)"
+          [checked]="item.checked"
         />
-        {{ item }}
+        {{ item.value }}
       </label>
     </div>
   </div>

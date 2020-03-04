@@ -11,6 +11,6 @@ export class CharacterService {
   constructor(private http: HttpClient) {}
 
   getCharacters(): Observable<Result> {
-    return this.http.get<Result>(`${environment.apiEndPoint}/character`);
+    return this.http.get<Result>(`${environment.apiEndPoint}`);
   }
 }

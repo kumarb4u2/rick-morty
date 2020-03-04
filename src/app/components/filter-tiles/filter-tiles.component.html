@@ -1,0 +1,12 @@
+<div *ngIf="getAllSelectedAttributes().length > 0">
+  <h2>Selected Filters</h2>
+  <div *ngFor="let item of getAllSelectedAttributes()" class="tile">
+    {{ item.value }}
+    <button
+      class="btn btn-default"
+      (click)="removeSelectedAttribute(item.value, item.category, false)"
+    >
+      X
+    </button>
+  </div>
+</div>
