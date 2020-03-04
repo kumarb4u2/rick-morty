@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiEndPoint: "https://rickandmortyapi.com/api"
+  apiEndPoint: "https://rickandmortyapi.com/api/character/"
 };
